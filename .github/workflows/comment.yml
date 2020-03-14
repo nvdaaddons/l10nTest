@@ -1,0 +1,37 @@
+name: comment-on-pr example
+on: pull_request
+jobs:
+  example:
+    name: sample comment
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      id: 1
+      uses: actions/checkout@v2
+      with:
+        path: main
+    - name: checkout template
+      id: 2
+      uses: actions/checkout@v2
+      with:
+        repository: nvdaaddons/AddonTemplate
+        path: addonTemplate
+    - name: check sconstructs file
+      id: 3
+      run: |
+        diff -u addonTemplate/sconstruct main/sconstruct
+    - name: check style file
+      id: 4
+      run: |
+        diff -u addonTemplate/style.css main/style.css
+    - name: check site_scons directory
+      id: 5
+      run: |
+        diff -ur addonTemplates/site_scons main/site_scons
+    - name: comment PR
+      if: steps.3 || steps.4 || steps.5
+      uses: unsplash/comment-on-pr@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        msg: "This pull request doesnt seem to have the latest addon template!"

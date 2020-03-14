@@ -29,7 +29,7 @@ jobs:
       run: |
         diff -ur addonTemplates/site_scons main/site_scons
     - name: comment PR
-      if: steps.sconstruct || steps.style || steps.site_scons
+      if: failure()
       uses: unsplash/comment-on-pr@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

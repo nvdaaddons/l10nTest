@@ -1,0 +1,21 @@
+name: Check that we are running with the latest addon template
+
+on: [push]
+
+jobs:
+  checkAgainstLatestTemplate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        path: main
+    - name: checkout template
+      uses: actions/checkout@v2
+      with:
+        repository: nvdaaddons/AddonTemplate
+        path: addonTemplate
+    - name: check sconstructs file
+      run: |
+        ls -1
+        false

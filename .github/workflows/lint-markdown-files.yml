@@ -13,5 +13,5 @@ jobs:
     - name: Lint
       run: |
         npm install -g markdownlint-cli
-        markdownlint **/*.md --ignore node_modules
+        markdownlint *.md **/*.md --ignore node_modules
 

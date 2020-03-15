@@ -13,7 +13,7 @@ jobs:
     - name: Run NVDA
       run: nvda\nvda.exe -f nvda.log --debug-logging
     - name: Quit NVDA
-      run: nvda -q
+      run: nvda\nvda.exe -q
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:

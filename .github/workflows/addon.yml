@@ -30,6 +30,17 @@ jobs:
         # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Build add-on
       run: scons
+    - name: Copy addon
+      run: move addon nvda\userConfig\addons
+    - name: Run NVDA
+      run: nvda\nvda.exe -f nvda.log --debug-logging
+    - name: Quit NVDA
+      run: nvda\nvda.exe -q
+    - name: Upload NVDA's log
+      uses: actions/upload-artifact@v1
+      with:
+        name: my-artifact
+        path: nvda\nvda.log
     - name: Create Release
       if: contains(github.ref, '/tags/')
       uses: actions/create-release@latest

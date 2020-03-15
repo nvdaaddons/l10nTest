@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" media="screen">
+<title>Clip Contents Designer</title>
+</head>
+<body>
+<h1>Designer für die Zwischenablage</h1>
+<ul>
+<li>Autoren: Noelia Ruiz Martínez, Abdel.</li>
+<li>NVDA-Kompatibilität: 2018.4 bis 2019.2.</li>
+<li><a href="https://addons.nvda-project.org/files/get.php?file=ccd">Stabile Version herunterladen</a></li>
+<li><a href="https://addons.nvda-project.org/files/get.php?file=ccd-dev">Entwicklerversion herunterladen</a></li>
+</ul>
+<p>Diese Erweiterung kann verwendet werden, um Text zur Zwischenablage
+hinzuzufügen. Dies kann beispielsweise beim Zusammenfügen von verschiedenen
+Textabschnitten nützlich sein. Der Inhalt der Zwischenablage kann auch
+gelöscht werden.</p>
+<h2>Tastenkombinationen</h2>
+<ul>
+<li>NVDA+Windows+C: Fügt den ausgewählten Text, MathML-Objekte als
+  Unicode-Punktschriftzeichen oder die Zeichenkette, die mit dem Lese-Cursor
+  markiert wurde, in die Zwischenablage hinzu.</li>
+<li>NVDA+windows+X: Löscht die Zwischenablage.</li>
+<li>NVDA+Windows+F9: Markiert die aktuelle Position des Lese-Cursors als Anfang des Textes, der in die Zwischenablage eingefügt werden soll. Wenn Sie nvda+F9 verwenden, wird der Text nicht hinzugefügt.</li>
+<li>Nicht zugeordnet: Kopien in die Zwischenablage (oder Ausschnitte aus der Zwischenablage) mit einer Bestätigungsabfrage einfügen oder entfernen.</li>
+</ul>
+<p>Anmerkung: Die obigen Befehle können im NVDA-Menü unter Einstellungen /
+Eingaben... in der Kategorie "Befehle zum Text betrachten" geändert werden.</p>
+<h2>Einstellungen</h2>
+<ul>
+<li>Einstellungen des Designers für den inhalt der Zwischenablage: hier kann ein Trennzeichen zum leichteren Auffinden von Textsegmenten gesetzt werden, sobald der gesamte Text zur Zwischenablage eingefügt wurde. Es kann auch gewählt werden, ob der hinzugefügte Text angehängt oder vorangestellt wird, ob verfügbare Aktionen (Hinzufügen, Löschen der Zwischenablage, Kopieren und Ausschneiden emulieren) sofort oder nach Bestätigung ausgeführt werden sollen und ob Bestätigungen nur bei vorhandenem Text in der Zwischenablage ausgegeben werden.</li>
+</ul>
+<p>Anmerkungen:</p>
+<ul>
+<li>Der obige Befehl kann im NVDA-Menü unter Einstellungen / Eingaben in der
+  Kategorie "Konfiguration" geändert werden.</li>
+<li>Bestätigungen werden nicht angefordert, wenn ein Meldungsfenster von NVDA
+  noch geöffnet ist. In diesem Fall werden die Aktionen sofort ausgeführt</li>
+</ul>
+<h2>Änderungen in 10.0</h2>
+<ul>
+<li>Es wurde ein Fehler in dem Dialog behoben, der verwendet wurde, um den
+  Text der Zwischenablage anzuzeigen, wenn sein Titel nicht-lateinische
+  Zeichen enthält.</li>
+<li>Ein Fehler wurde behoben, der bei der Verwendung der emulierten Funktionen
+  zum Ausschneiden und Kopieren mit einem arabischen Tastaturlayout
+  auftrat. Dies wurde von Abdel behoben, der als zusätzlichen Autor dieser
+  Erweiterung nun hinzugefügt wurde.</li>
+</ul>
+<h2>Änderungen in 9.0</h2>
+<ul>
+<li>Es wurde die Möglichkeit hinzugefügt, den Text der Zwischenablage im
+  Lesemodus anzuzeigen.</li>
+<li>Es wurde eine Option hinzugefügt, um zu wählen, ob Bestätigungen
+  erforderlich sind, wenn die Zwischenablage nicht leer ist, z.B. wenn
+  Dateien oder Ordner kopiert wurden.</li>
+<li>Benötigt NVDA 2018.4 oder höher.</li>
+</ul>
+<h2>Änderungen in 8.0</h2>
+<ul>
+<li>Die Einstellungen für die Erweiterung werden in der entsprechenden
+  Kategorie der Einstellungen von NVDA angezeigt.</li>
+<li>Benötigt NVDA 2018.2 oder höher.</li>
+<li>Bei Bedarf können Sie die <a href="https://addons.nvda-project.org/files/get.php?file=ccd-o">letzte Version, die mit NVDA 2017.3 kompatibel
+  ist</a> herunterladen.</li>
+</ul>
+<h2>Änderungen in 7.0</h2>
+<ul>
+<li>Die Befehle im Dialog zum Konfigurieren der Funktionen für das Emulieren
+  der Kopier- und Ausschneide-Funktion  werden bei der Installation
+  entfernt, so dass das normale Verhalten von Strg+C und Strg+X
+  wiederhergestellt werden kann.</li>
+</ul>
+<h2>Änderungen in 6.0</h2>
+<ul>
+<li>Optionen für verfügbare Aktionen nach der Ausführung einer Bestätigung  wurden hinzugefügt.</li>
+<li>Befehle für das Kopieren und Ausschneiden emulieren sind nun vorhanden. Diese können im NVDA-Menü im Bereich "Eingaben..." angepasst werden.</li>
+<li>Es wurde ein Dialog hinzugefügt, um die Funktionen Kopieren und Ausschneiden emulieren bei der Installation anzupassen. Dies erlaubt es, die Befehle Strg+C und Strg+X zum Kopieren und Ausschneiden hinzuzufügen. Die Bestätigungsmeldung, ob Sie den Inhalt der Zwischenablage ersetzen möchten, kann hier umgeschaltet werden.</li>
+<li>Die Dokumentation für script_add (Windows+NVDA+C) wurde korrigiert.</li>
+</ul>
+<h2>Änderungen in 5.0</h2>
+<ul>
+<li>Die visuelle Darstellung des Dialogs wurde verbessert und entspricht dem
+  Erscheinungsbild der Dialoge in NVDA.</li>
+<li>Benötigt NVDA 2016.4 oder höher.</li>
+</ul>
+<h2>Änderungen in 4.0</h2>
+<ul>
+<li>Erweiterungseinstellungen werden von der NVDA-Konfiguration verwaltet, so
+  dass Standardprofile verwendet werden können, um verschiedene Trennlinien
+  zu speichern. Es ist nicht erforderlich, die Einstellungen für den Import
+  bei der Neuinstallation zu kopieren.</li>
+<li>Es kann nun gewählt werden, ob der hinzugefügte Text angehängt oder
+  vorangestellt werden soll, indem Sie das Kontrollkästchen Text vor den
+  Daten der Zwischenablage hinzufügen im Einstellungsdialog der Erweiterung
+  verwenden.</li>
+</ul>
+<h2>Änderungen in 3.0</h2>
+<ul>
+<li>Braille-Darstellung von MathML-Objekten können bei installiertem
+  MathPlayer zur Zwischenablage kopiert oder ausgeschnitten werden.</li>
+<li>Wenn kein Trennzeichen gesetzt ist, wird nur eine einzige Linie zwischen
+  den angehängten Textsegmenten platziert.</li>
+<li>Sie können ein Tastenkürzel zum Öffnen des Einstellungsdialogs zuweisen.</li>
+<li>Es wurde ein Kontrollkästchen im Einstellungsdialog hinzugefügt, mit dem
+  festgelegt wird, ob die Trennlinie beim erneuten Installieren der
+  Erweiterung für den Import kopiert werden soll.</li>
+</ul>
+<h2>Änderungen in 2.0</h2>
+<ul>
+<li>Indische Zeichen können nun als Trennzeichen zwischen kopierten Inhalten
+  verwendet werden.</li>
+</ul>
+<h2>Änderungen in 1.0</h2>
+<ul>
+<li>Erstveröffentlichung.</li>
+</ul>
+<p>[[!tag dev stable]]</p>
+</body>
+</html>

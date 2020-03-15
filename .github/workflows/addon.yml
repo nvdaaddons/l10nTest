@@ -31,7 +31,7 @@ jobs:
     - name: Build add-on
       run: scons
     - name: Copy addon
-      run: move addon nvda\userConfig\addons
+      run: move addon nvda\userConfig\addons\addon
     - name: Run NVDA
       run: nvda\nvda.exe -f nvda.log --debug-logging
     - name: Quit NVDA

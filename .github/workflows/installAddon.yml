@@ -8,22 +8,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        path: addonTemplate
-    - name: checkout NVDA
-      uses: actions/checkout@v2
-      with:
-        repository: nvaccess/nvda
-        ref: 'release-2019.3.1'
-        path: nvda
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-        architecture: x86
-    - name: Build NVDA
+    - name: Copy addon
+      run: robocopy addon nvda\userConfig\addons /s /e
+    - name: Run NVDA
       run: |
-        cd nvda
-        scons source
-        cd source
-        nvda.pyw
+        nvda\nvda.exe -f nvda.log --debug-logging
+        nvda -q
+    - name: Upload NVDA's log
+      uses: actions/upload-artifact@v1
+      with:
+        name: my-artifact
+        path: nvda\nvda.log

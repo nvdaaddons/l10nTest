@@ -1,6 +1,6 @@
 name: Install add-on and run NVDA
 
-on: [pull_request]
+on: [push]
 
 jobs:
   installAddon:

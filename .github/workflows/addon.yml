@@ -33,7 +33,7 @@ jobs:
     - name: Copy addon
       run: |
         move *.nvda-addon addon.zip
-        expand-archive addon.zip nvda\userConfig\addons\addon
+        expand-archive addon.zip nvda\userConfig\addons
     - name: Run NVDA
       run: nvda\nvda.exe -f nvda.log --debug-logging
     - name: Quit NVDA

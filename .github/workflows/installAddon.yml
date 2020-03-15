@@ -9,7 +9,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Copy addon
-      run: robocopy addon nvda\userConfig\addons /s /e
+      run: move addon nvda\userConfig\addons
     - name: Run NVDA
       run: |
         nvda\nvda.exe -f nvda.log --debug-logging

@@ -14,11 +14,13 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: nvaccess/nvda
+        ref: 'release-2019.3.1'
         path: nvda
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
+        architecture: x86
     - name: Build NVDA
       run: |
         cd nvda

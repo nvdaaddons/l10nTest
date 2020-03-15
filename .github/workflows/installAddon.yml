@@ -1,0 +1,27 @@
+name: Install add-on and run NVDA
+
+on: [pull_request]
+
+jobs:
+  installAddon:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        path: addonTemplate
+    - name: checkout NVDA
+      uses: actions/checkout@v2
+      with:
+        repository: nvaccess/nvda
+        path: nvda
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7.5
+    - name: Build NVDA
+      run: |
+        cd nvda
+        scons source
+        cd source
+        nvda.pyw

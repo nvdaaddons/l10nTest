@@ -1,0 +1,196 @@
+﻿#locale/pl/symbols.dic
+#A part of NonVisual Desktop Access (NVDA)
+#Copyright (c) 2011-2017 NVDA Contributors
+#This file is covered by the GNU General Public License.
+
+complexSymbols:
+# identifier	regexp
+# Sentence endings.
+. sentence ending	(?<=[^\s.])\.(?=[\"'”’)\s]|$)
+! sentence ending	(?<=[^\s!])\!(?=[\"'”’)\s]|$)
+? sentence ending	(?<=[^\s?])\?(?=[\"'”’)\s]|$)
+# Phrase endings.
+; phrase ending	(?<=[^\s;]);(?=\s|$)
+: phrase ending	(?<=[^\s:]):(?=\s|$)
+# Others
+decimal point	(?<![^\d -])\.(?=\d)
+in-word '	(?<=[^\W_])['’]
+negative number	(?<!\w)-(?=[$£€¥.]?\d)
+
+symbols:
+# identifier	replacement[[	level][	preserve]][	# display name]
+
+# Complex symbols
+. sentence ending	kropka	all	always
+! sentence ending	wykrzyknik	all	always
+? sentence ending	pytajnik	all	always
+; phrase ending	średnik	most	always
+: phrase ending	dwukropek	most	always
+decimal point		none	always
+in-word '	apostrof	all	norep
+negative number	minus	none	norep
+
+# Whitespace
+\0	biała spacja	char	# null
+\t	tab
+\n	koniec linii	char
+\f	podział strony	none
+\r	nowy wiersz	char
+ 	spacja	char
+ 	spacja	char	# no-break space
+
+# Standard punctuation/symbols
+!	wykrzyknik	all
+"	cudzysłów	most
+\#	hash	some
+$	dolar	all	norep
+£	funt	all	norep
+€	euro	some
+¢	Centy	all	norep
+¥	Jen	all	norep
+₹	rupia	some	norep
+%	procent	some
+&	and	some
+'	apostrof	all
+(	lewy nawias	most	always
+)	prawy nawias	most	always
+*	gwiazdka	some
++	plus	some
+,	przecinek	all	always
+-	minus	most
+.	kropka	some
+/	slesz	some
+:	dwukropek	most	norep
+;	średnik	most
+<	mniejsze	some
+>	większe	some
+=	równe	some
+?	pytajnik	all
+@	małpa	some
+[	lewy kwadratowy	most
+]	prawy kwadratowy	most
+\\	bekslesz	most
+^	daszek	most
+_	podkreślacz	most
+`	akcent	most
+{	lewy klamrowy	most
+}	prawy klamrowy	most
+|	kreska pionowa	most
+~	tylda	most
+
+# Other characters
+•	punktor	some
+…	wielokropek	all	always
+...	kropka kropka kropka	all	always
+“	lewy cudzysłów	most
+”	prawy cudzysłów	most
+‘	lewy apostrof	most
+’	prawy apostrof	most
+–	półpauza	most	always
+—	myślnik	most
+●	kółko	most
+¨	diereza	most
+‎	znak lewa do prawej	char
+‏	znak prawa do lewej	char
+■	czarny kwadrat	some
+▪	czarny kwadrat	some
+◾	czarny kwadrat	some
+◦	biały punktor	some
+⇒	podwójna strzałka w prawo	some
+⇨	biała strzałka w prawo	some
+➢	prawy grot strzałki	some
+⮚	końcowy grot strzałki	some
+❖	czarny diament minus białe X	some
+♣	black club	some
+♦	czarny diament	some
+§	sekcja	all
+°	stopień	some
+«	podwujny cudzysłów otwierający
+»	podwujny cudzysłów zamykający
+µ	mikro	some
+¹	indeks górny 1	some
+²	indeks górny 2	some
+³	indeks górny 3	some
+®	zarejestrowany	some
+™	znak handlowy	some
+©	Znak praw autorskich	some
+±	Plus Minus	some
+×	razy	some
+÷	dzielenie	some
+←	strzałka w lewo	some
+↑	strzałka w górę	some
+→	strzałka w prawo	some
+↓	strzałka w dół	some
+✓	check	some
+✔	check	some
+🡺	strzałka w prawo	some
+
+#Mathematical Operators U+2200 to U+220F
+
+∀	dla każdego	none
+∁	Dopełnienie	none
+∂	Pochodna cząstkowa	none
+∃	Istnieje	none
+∄	Nie istnieje	none
+∅	Zbiór pusty	none
+∆	Inkrementacja	none
+∇	NABLA	none
+∈	Element zbioru	none
+∉	nie element zbioru	none
+∊	Mały element zbioru	none
+∋	Zawiera jako element	none
+∌	Nie zawiera jako element	none
+∍	Mały zawiera jako element	none
+∎	Koniec dowodu	none
+∏	N-ty produkt	none
+
+# Miscellaneous Mathematical Operators
+
+∑	N-ta suma	none
+√	Pierwiastek kwadratowy	none
+∛	Pierwiastek sześcienny	none
+∜	Pierwiastek czwartego stopnia	none
+∝	Proporcjonalne do	none
+∞	Nieskończoność	none
+∟	Kąt prosty	none
+∠	Kąt	none
+∥	Równoległe do	none
+∦	Nierównoległe do	none
+∧	Logiczne i	none
+∨	Logiczne lub	none
+∩	Przecięcie	none
+∪	Część wspólna	none
+∫	Całka	none
+∴	Dlatego	none
+∵	Ponieważ	none
+∶	Stosunek	none
+∷	Proporcja	none
+≤	Mniejsze lub równe	none
+≥	Większe lub równe	none
+⊂	Podzbiór zbioru	none
+⊃	Nadzbiór zbioru	none
+⊆	podzbiór lub równość	none
+⊇	Nadzbiór lub równość	none
+‰	promil	most
+ó	u kreska	char	always
+Ó	u kreska	char	always
+
+# Vulgur Fractions U+2150 to U+215E
+⅐	jedna siódma	none
+⅑	jedna dziewiąta	none
+⅒	jedna dziesiąta	none
+⅓	jedna trzecia	none
+⅔	dwie trzecie	none
+⅕	jedna piąta	none
+⅖	dwie piąte	none
+⅗	trzy piąte	none
+⅘	cztery piąte	none
+⅙	jedna szósta	none
+⅚	pięć szóstych	none
+⅛	jedna ósma	none
+⅜	trzy ósme	none
+⅝	pięć ósmych	none
+⅞	siedem ósmych	none
+
+# Miscellaneous Technical
+⌘	klawisz komendy Mac	none

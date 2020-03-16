@@ -31,7 +31,7 @@ jobs:
     - name: Build add-on
       run: scons
     - name: Download NVDA
-      run: curl --output stable.exe https://addons.nvda-project.org/files/get.php?nvda
+      run: curl --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     -  name: Copy addon
       if: success()
       run: |

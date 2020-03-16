@@ -32,7 +32,7 @@ jobs:
       run: scons
     - name: Download NVDA
       run: curl --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
-    -  name: Copy addon
+    - name: Copy addon
       if: success()
       run: |
         move *.nvda-addon addon.zip

@@ -39,10 +39,10 @@ jobs:
         expand-archive addon.zip nvda\userConfig\addons\addon
     - name: Run NVDA
       if: success()
-      run: nvda\nvda.exe -m -f nvda.log --debug-logging
+      run: stable.exe -m -f nvda.log --debug-logging
     - name: Quit NVDA
       if: success()
-      run: nvda\nvda.exe -q
+      run: nvda -q
     - name: Upload NVDA's log
       if: success()
       uses: actions/upload-artifact@v1

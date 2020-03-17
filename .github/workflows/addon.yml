@@ -42,7 +42,8 @@ jobs:
     - name: Start NVDA
       run: |
         cd %PROGRAMFILES(X86)%\nvda
-        nvda.exe -r -m --debug-logging
+        dir
+        # nvda.exe -r -m --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: nvda -q

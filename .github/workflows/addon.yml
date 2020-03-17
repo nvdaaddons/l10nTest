@@ -40,9 +40,7 @@ jobs:
         move *.nvda-addon addon.zip
         expand-archive addon.zip '%appdata%\nvda\addons\addon'
     - name: Start NVDA
-      run: |
-        cd %PROGRAMFILES(X86)%\nvda
-        dir
+      run: cd '%PROGRAMFILES(X86)%\nvda'  && dir
       shell: cmd
     - name: Quit NVDA
       run: nvda -q

@@ -48,7 +48,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: NVDA-log
-        path: nvda.log
+        path: '%TEMP%\nvda.log'
     - name: Create Release
       if: contains(github.ref, '/tags/')
       uses: actions/create-release@latest

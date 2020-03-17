@@ -33,14 +33,12 @@ jobs:
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
-      run: stable.exe --install-silent
+      run: stable.exe --install -m --debug-logging
       shell: cmd
     - name: Copy addon
       run: |
         move *.nvda-addon addon.zip
         expand-archive addon.zip '%appdata%\nvda\addons\addon'
-    - name: Start NVDA
-      run: '%PROGRAMFILES(X86)%\nvda\nvda.exe' -r -m --debug-logging
     - name: Quit NVDA
       run: nvda -q
     - name: Upload NVDA's log

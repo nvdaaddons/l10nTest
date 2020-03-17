@@ -40,7 +40,9 @@ jobs:
         move *.nvda-addon addon.zip
         expand-archive addon.zip '%appdata%\nvda\addons\addon'
     - name: Start NVDA
-      run: nvda -m --debug-logging
+      run: |
+        cd "%PROGRAMFILES(X86)%\nvda"
+        nvda.exe -r -m --debug-logging
     - name: Quit NVDA
       run: nvda -q
     - name: Upload NVDA's log

@@ -38,15 +38,15 @@ jobs:
         expand-archive addon.zip nvda\userConfig\addons\addon
     - name: Run NVDA portable
       run: |
-        stable.exe --create-portable --portable-path=nvda
-        stable.exe -m -f nvda.log --debug-logging
+        stable.exe --install
+        stable.exe -m--debug-logging
     - name: Quit NVDA
       run: nvda -q
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
         name: NVDA-log
-        path: nvda\nvda.log
+        path: %temp%\nvda\nvda.log
     - name: Create Release
       if: contains(github.ref, '/tags/')
       uses: actions/create-release@latest

@@ -44,8 +44,8 @@ jobs:
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
-    - name: get a copy of the log file from temp directory
-      run: copy %TEMP%\nvda.log nvda.log
+    - name: get the log file from temp directory
+      run: timeout 10 & move %TEMP%\nvda.log nvda.log
       shell: cmd
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1

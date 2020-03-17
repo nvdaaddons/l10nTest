@@ -32,8 +32,7 @@ jobs:
       run: scons
     - name: Copy addon
       run: |
-        move
-move *.nvda-addon addon.zip
+        move *.nvda-addon addon.zip
         expand-archive addon.zip '%appdata%\nvda\addons\addon'
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
@@ -46,8 +45,7 @@ move *.nvda-addon addon.zip
       run: start nvda -q
       shell: cmd
     - name: get a copy of the log file from temp directory
-      run:
-        copy %TEMP%\nvda.log nvda.log
+      run: copy %TEMP%\nvda.log nvda.log
       shell: cmd
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1

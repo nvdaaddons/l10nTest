@@ -37,7 +37,7 @@ jobs:
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
-      run: stable.exe --install -m -f '%TEMP%\nvda.log' --debug-logging
+      run: stable.exe --install -m -f nvda.log --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
@@ -46,7 +46,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: NVDA-log
-        path: '%TEMP%\nvda.log'
+        path: %TEMP%\nvda.log
     - name: Create Release
       if: contains(github.ref, '/tags/')
       uses: actions/create-release@latest

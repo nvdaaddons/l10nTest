@@ -43,6 +43,7 @@ jobs:
       run: |
         cd "%PROGRAMFILES(X86)%\nvda"
         nvda.exe -r -m --debug-logging
+      shell: cmd
     - name: Quit NVDA
       run: nvda -q
     - name: Upload NVDA's log

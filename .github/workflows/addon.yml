@@ -37,8 +37,9 @@ jobs:
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
-      run: stable.exe --install -m -f nvda.log --debug-logging
-      dir
+      run: |
+        stable.exe --install -m -f nvda.log --debug-logging
+        dir
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q

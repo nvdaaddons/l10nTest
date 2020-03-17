@@ -44,11 +44,14 @@ jobs:
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
+    - name: get a copy of the log file from temp directory
+      run:
+        move %TEMP%\nvda.log nvda.log
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
         name: NVDA-log
-        path: '%TEMP%\nvda.log'
+        path: nvda.log
     - name: Create Release
       if: contains(github.ref, '/tags/')
       uses: actions/create-release@latest

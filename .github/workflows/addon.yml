@@ -39,7 +39,7 @@ jobs:
     - name: Install NVDA
       run: |
         stable.exe --install -m -f nvda.log --debug-logging
-        dir
+        dir %temp%
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q

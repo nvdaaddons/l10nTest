@@ -33,7 +33,7 @@ jobs:
     - name: Download NVDA
       run: curl --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
-      run: stable.exe create-portable --portable-path=nvda
+      run: dir
       shell: cmd
     - name: Copy addon
       run: |

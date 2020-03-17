@@ -41,7 +41,7 @@ jobs:
         expand-archive addon.zip '%appdata%\nvda\addons\addon'
     - name: Start NVDA
       run: |
-        cd "%PROGRAMFILES(X86)%\nvda"
+        cd %PROGRAMFILES(X86)%\nvda
         nvda.exe -r -m --debug-logging
       shell: cmd
     - name: Quit NVDA

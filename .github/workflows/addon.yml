@@ -40,7 +40,10 @@ jobs:
         move *.nvda-addon addon.zip
         expand-archive addon.zip '%appdata%\nvda\addons\addon'
     - name: Quit NVDA
-      run: nvda -q
+      run: |
+        cd %programfiles(x86)%\nvda
+        nvda.exe -q
+      shell: cmd
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:

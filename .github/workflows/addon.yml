@@ -32,13 +32,13 @@ jobs:
       run: scons
     - name: Download NVDA
       run: curl --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
+    - name: Install NVDA
+      run: stable.exe create-portable --portable-path=nvda
+      shell: cmd
     - name: Copy addon
       run: |
         move *.nvda-addon addon.zip
         expand-archive addon.zip nvda\userConfig\addons\addon
-    - name: Install NVDA
-      run: stable.exe --install-silent
-      shell: cmd
     - name: Start NVDA
       run: nvda -m --debug-logging
     - name: Quit NVDA

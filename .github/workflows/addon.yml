@@ -37,7 +37,9 @@ jobs:
         move *.nvda-addon addon.zip
         expand-archive addon.zip nvda\userConfig\addons\addon
     - name: Install NVDA
-      run: stable.exe --install-silent
+      run: |
+        stable.exe --install-silent
+        shell: cmd
     - name: Start NVDA
       run: nvda -m --debug-logging
     - name: Quit NVDA

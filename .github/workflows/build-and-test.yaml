@@ -46,10 +46,10 @@ jobs:
       run: start nvda -q
       shell: cmd
     - name: look in workspace directory to see what is there
-      run: tree
+      run: dir /s /b /a
       shell: cmd
     - name: look in nvda appdata directory to see what is there.
-      run: tree %APPDATA%\nvda
+      run: dir /s /b /a %APPDATA%\nvda
       shell: cmd
     #- name: look in nvda appdata addons directory
       #run: dir %APPDATA%\nvda\addons

@@ -45,8 +45,9 @@ jobs:
       run: start nvda -q
       shell: cmd
     - name: get the log file from temp directory
+      shell: cmd
       run: |
-        Start-Sleep -s 10
+        ping 192.0.2.0 -n 1 -w 10000 > nul
         move %TEMP%\nvda.log nvda.log
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1

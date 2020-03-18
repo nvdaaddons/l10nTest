@@ -45,20 +45,23 @@ jobs:
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
-    #- name: look in nvda appdata directory to see what is there.
-      #run: dir %APPDATA%\nvda
-      #shell: cmd
-    #- name: look in nvda appdata addons directory
-      #run: dir %APPDATA%\nvda\addons
-      #shell: cmd
-    #- name: look in nvda addons addon directory
-      #run: dir %APPDATA%\nvda\addons\addon
-      #shell: cmd
-    #- name: get the log file from temp directory
-      #shell: cmd
-      #run: |
-        #ping 192.0.2.0 -n 1 -w 10000 > nul
-        #copy %TEMP%\nvda.log nvda.log
+    - name: look in workspace directory to see what is there
+      run: dir
+      shell: cmd
+    - name: look in nvda appdata directory to see what is there.
+      run: dir %APPDATA%\nvda
+      shell: cmd
+    - name: look in nvda appdata addons directory
+      run: dir %APPDATA%\nvda\addons
+      shell: cmd
+    - name: look in nvda addons addon directory
+      run: dir %APPDATA%\nvda\addons\addon
+      shell: cmd
+    - name: get the log file from temp directory
+      shell: cmd
+      run: |
+        ping 192.0.2.0 -n 1 -w 10000 > nul
+        copy %TEMP%\nvda.log nvda.log
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:

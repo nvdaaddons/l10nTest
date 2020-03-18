@@ -40,7 +40,7 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m -c testPath -f testPath\nvda.log --debug-logging
+      run: start nvda -m -f nvda.log --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
@@ -61,12 +61,6 @@ jobs:
       with:
         name: nvda_here
         path: nvda_here
-    #- name: look in nvda appdata addons directory
-      #run: dir %APPDATA%\nvda\addons
-      #shell: cmd
-    #- name: look in nvda addons addon directory
-      #run: dir %APPDATA%\nvda\addons\addon
-      #shell: cmd
     - name: get the log file from temp directory
       shell: cmd
       run: |
@@ -75,5 +69,5 @@ jobs:
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
-        name: NVDA-log
-        path: testPath\nvda.log
+        name: nvda.log
+        path: nvda.log

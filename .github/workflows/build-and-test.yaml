@@ -46,17 +46,17 @@ jobs:
       run: start nvda -q
       shell: cmd
     - name: look in workspace directory to see what is there
-      run: dir
+      run: tree
       shell: cmd
     - name: look in nvda appdata directory to see what is there.
-      run: dir %APPDATA%\nvda
+      run: tree %APPDATA%\nvda
       shell: cmd
-    - name: look in nvda appdata addons directory
-      run: dir %APPDATA%\nvda\addons
-      shell: cmd
-    - name: look in nvda addons addon directory
-      run: dir %APPDATA%\nvda\addons\addon
-      shell: cmd
+    #- name: look in nvda appdata addons directory
+      #run: dir %APPDATA%\nvda\addons
+      #shell: cmd
+    #- name: look in nvda addons addon directory
+      #run: dir %APPDATA%\nvda\addons\addon
+      #shell: cmd
     - name: get the log file from temp directory
       shell: cmd
       run: |

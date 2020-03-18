@@ -46,9 +46,8 @@ jobs:
       shell: cmd
     - name: get the log file from temp directory
       run: |
-        timeout 10
+        Start-Sleep -s 10
         move %TEMP%\nvda.log nvda.log
-      shell: cmd
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:

@@ -1,4 +1,4 @@
-name: Build and release NVDA add-on
+name: Upload on new tags
 
 on:
   push:

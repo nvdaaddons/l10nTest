@@ -1,4 +1,4 @@
-name: Build and release NVDA add-on
+name: Build and test addon
 
 on: [push, pull_request]
 

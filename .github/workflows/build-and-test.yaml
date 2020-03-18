@@ -47,6 +47,9 @@ jobs:
     - name: look in nvda appdata directory to make sure addon was extracted correctly
       run: dir %APPDATA%\nvda\addons
       shell: cmd
+    - name: look in nvda addons directory v2
+      run: dir %APPDATA%\nvda\addons\addon
+      shell: cmd
     - name: get the log file from temp directory
       shell: cmd
       run: |

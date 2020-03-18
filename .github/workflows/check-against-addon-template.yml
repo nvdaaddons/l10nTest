@@ -24,3 +24,10 @@ jobs:
     - name: check site_scons directory
       run: |
         diff -ur addonTemplates/site_scons main/site_scons
+    - name: comment PR
+      if: failure()
+      uses: unsplash/comment-on-pr@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        msg: "This pull request doesnt seem to have the latest addon template!"

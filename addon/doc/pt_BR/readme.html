@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" media="screen">
+<title>Clip Contents Designer</title>
+</head>
+<body>
+<h1>Gestor do conteúdo de transferência</h1>
+<ul>
+<li>Authors: Noelia, Abdel.</li>
+<li>NVDA compatibility: 2018.4 to 2019.2.</li>
+<li>Baixe a <a href="https://addons.nvda-project.org/files/get.php?file=ccd">versão estável</a></li>
+<li>Baixe a <a href="https://addons.nvda-project.org/files/get.php?file=ccd-dev">versão de desenvolvimento</a></li>
+</ul>
+<p>This add-on is used to add text to the clipboard, which can be useful when
+you want to join sections of text together ready for pasting.  The clipboard
+content can also be cleared an shown in browse mode.</p>
+<h2>Comandos de tecla</h2>
+<ul>
+<li>NVDA+windows+c: Acrescenta o texto selecionado, os caracteres unicode
+  braille que representem objetos MathML, ou a cadeia que foi marcada com o
+  cursor de exploração, à área de transferência.</li>
+<li>NVDA+windows+x: Apaga o conteúdo da área de transferência.</li>
+<li>NVDA+windows+f9: Mark the current position of the review cursor as the start of the text to be added to the clipboard. If you use nvda+F9, the text will not be added.</li>
+<li>Not assigned: Copies to (or cuts from) the clipboard, with the possibility of being asked for a previous confirmation.</li>
+<li>Not assigned: Shows the clipboard text in browse mode, or announces if clipboard is empty or has contents which can't be presented in a browseable message, for instance if files or folders are been copied from Windows Explorer..</li>
+</ul>
+<p>Nota: Os comandos acima podem ser alterados a partir do menu do NVDA,
+submenu Preferências, diálogo de Gestos para Entrada, categoria Exploração
+de texto.</p>
+<h2>Menu Preferências</h2>
+<ul>
+<li>Clip Contents Designer settings: Allows to set a separator which can be used to find the text segments once the entire added text is pasted.
+It's also possible to choose if the added text will be appended or prepended, if available actions (add, clear clipboard, emulate copy and emulate cut) should be performed inmediately or after confirmation, and if confirmations will be requested always, just if text is contained in the clipboard, or if clipboard is not empty.
+Furthermore, it's possible to change the format and maximum number of characters of the clipboard text which will be shown in browse mode. Please, be aware that increasing this limit may produce issues if the clipboard contains large strings of text. The default limit is 100000 characters.</li>
+</ul>
+<p>Notas:</p>
+<ul>
+<li>Os comandos acima podem ser alterados a partir do menu do NVDA, submenu
+  Preferências, diálogo de Gestos para Entrada, categoria configuração.</li>
+<li>Confirmação não será solicitada quando um diálogo do NVDA ainda estiver
+  aberto. Nesses casos, as ações serão executadas de imediato</li>
+</ul>
+<h2>Changes for 10.0</h2>
+<ul>
+<li>Fixed a bug in the dialog used to show the clipboard text, when its title
+  contains non latin characters.</li>
+<li>Fixed a bug when using the emulate cut and copy features with an Arabic
+  keyboard layout. This has been fixed by Abdel, added as an add-on author.</li>
+</ul>
+<h2>Changes for 9.0</h2>
+<ul>
+<li>Added the possibility of showing the clipboard text in browse mode.</li>
+<li>Added an option to choose if confirmations will be required if clipboard
+  is not empty, for instance, if files or folders are been copied.</li>
+<li>Requires NVDA 2018.4 or later.</li>
+</ul>
+<h2>Mudanças na 8.0</h2>
+<ul>
+<li>As configurações do complemento são mostradas na categoria correspondente
+  da caixa de diálogo Configurações do NVDA.</li>
+<li>Requer NVDA 2018.2 ou posterior.</li>
+<li>Se necessário, você pode fazer o download da <a href="https://addons.nvda-project.org/files/get.php?file=ccd-o">última versão compatível com
+  o NVDA 2017.3</a>.</li>
+</ul>
+<h2>Mudanças na 7.0</h2>
+<ul>
+<li>Na caixa de diálogo da instalação para configurar as funcionalidades
+  Emular cópia e Emular corte, se você escolher não, os comandos para esses
+  recursos serão removidos, para que você possa restaurar o comportamento
+  normal para control+c e control+x.</li>
+</ul>
+<h2>Mudanças na 6.0</h2>
+<ul>
+<li>Adicionadas opções para escolher se as ações disponíveis devem ser executadas após confirmação.</li>
+<li>Adicionados comandos emulação de copiar e emulação de cortar, que podem ser atribuídos no diálogo de gestos para entrada.</li>
+<li>Adicionado um diálogo para configurar as funções emulação de copiar e de cortar na instalação. Isso possibilita adicionar os comandos control+c e control+x para copiar e cortar e ser indagado se deseja substituir o conteúdo da área de transferência ao pressionar essas teclas.</li>
+<li>Corrigida documentação para script_add (Windows+NVDA+c).</li>
+</ul>
+<h2>Mudanças na 5.0</h2>
+<ul>
+<li>A apresentação visual do diálogo foi aprimorada, aderindo à aparência dos
+  diálogos mostrados no NVDA.</li>
+<li>Requer NVDA 2016.4 ou posterior.</li>
+</ul>
+<h2>Mudanças na 4.0</h2>
+<ul>
+<li>As opções do complemento são agora geridas pela configuração do NVDA, de
+  modo que se pode usar perfis para salvar diferentes separadores e não é
+  necessário copiar as opções para importá-las quando duma reinstalação.</li>
+<li>Agora é possível escolher se o texto será acrescentado depois ou antes do
+  que já está lá, usando a caixa de seleção acrescentar texto antes dos
+  dados, no diálogo de opções do gestor de conteúdo da área de
+  transferência.</li>
+</ul>
+<h2>Mudanças na 3.0</h2>
+<ul>
+<li>Representações braille de objetos MathML podem ser acrescentadas à área de
+  transferência se o MathPlayer estiver instalado.</li>
+<li>Caso nenhum separador seja configurado, apenas uma linha será colocada
+  entre os segmentos de texto acrescentados.</li>
+<li>Uma tecla de atalho pode ser atribuída para abrir o diálogo de opções do
+  gestor do conteúdo de transferência.</li>
+<li>Adicionada uma caixa de seleção ao diálogo de opções, para escolher se o
+  separador deve ser copiado para ser importado ao reinstalar o complemento.</li>
+</ul>
+<h2>Mudanças na 2.0</h2>
+<ul>
+<li>Caracteres hindi podem ser usados como o separador entre conteúdos
+  acrescentados.</li>
+</ul>
+<h2>Mudanças na 1.0</h2>
+<ul>
+<li>Versão inicial.</li>
+</ul>
+<p>[[!tag dev stable]]</p>
+</body>
+</html>

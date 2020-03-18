@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" media="screen">
+<title>Clip Contents Designer</title>
+</head>
+<body>
+<h1>Clip Contents Designer</h1>
+<ul>
+<li>Autori: Noelia și Abdel.</li>
+<li>Compatibilitate NVDA: 2018.4 - 2019.2.</li>
+<li>Descarcă <a href="https://addons.nvda-project.org/files/get.php?file=ccd">versiunea stabilă</a></li>
+<li>Descarcă <a href="https://addons.nvda-project.org/files/get.php?file=ccd-dev">versiunea în dezvoltare</a></li>
+</ul>
+<p>Acest supliment este utilizat pentru a adăuga text pe planșetă, care poate
+fi folositor când dorești să accesezi secțiuni de text împreună gata pentru
+a fi lipit. Conținutul de pe planșetă poate, deasemenea, fi curățat și
+afișat în modul de navigare.</p>
+<h2>Comenzi de taste</h2>
+<ul>
+<li>NVDA+Windows+C: Adaugă textul selectat, caracterele Unicode braille care
+  reprezintă obiectele MathML, sau string-ul care a fost marcat cu cursorul
+  de vizualizare, pe planșetă.</li>
+<li>NVDA+Windows+X: Curăță contentul de pe planșetă.</li>
+<li>NVDA+Windows+F9: Marchează poziția de vizualizare curentă din examinarea cursorului ca începutul textului pentru a fi adăugat pe planșetă. Dacă utilizați NVDA+F9, textul nu va fi adăugat.</li>
+<li>Neatribuită: Copiază, cu posibilitatea de a fi întrebat pentru o confirmare anterioară.</li>
+<li>Neatribuită: Afișează textul de pe planșetă în modul de navigare sau anunță dacă planșeta este goală ori are conținut care nu poate fi prezentat într-un mesaj de navigare, un bun exemplu fiind copierea fișierelor sau a folderelor din Windows Explorer..</li>
+</ul>
+<p>Notă: Comenzile de mai sus pot fi modificate din meniul NVDA, Preferințe,
+Gesturi de intrare, Categoria de vizualizare a textului.</p>
+<h2>Meniul de preferințe</h2>
+<p>*\TSetări Contents Clip Designer: Permite setarea unui separator care poate fi utilizat pentru a găsi segmente de text odată ce întregul text adăugat este lipit.
+Este de asemenea posibil să se aleagă dacă textul adăugat va fi anexat sau prefixat, dacă există opțiuni disponibile (adaugă, curăță planșeta, simulează copia și simulează tăierea) ar trebui să fie efectuate imediat sau după confirmare și dacă confirmările vor fi solicitate doar dacă textul este conținut pe planșetă.
+În plus, puteți modifica formatul și numărul maxim de caractere pe care textul de pe planșetă care va fi afișat în modul de navigare trebuie să îl aibă. Vă rugăm să aveți în vedere faptul că, cu cât e mai mare limita, cu atât mai mult sunt șanse să apară probleme. Limita implicită este de 100000 de caractere.</p>
+<p>Note:</p>
+<ul>
+<li>Comanda de mai sus poate fi modificată din meniul NVDA, Preferințe,
+  Gesturi de intrare, Categoria de configurare.</li>
+<li>Confirmările nu vor fi solicitate dacă o casetă de mesaj a NVDA-ului e
+  încă deschisă. În aceste cazuri, acțiunile vor fi efectuate imediat</li>
+</ul>
+<h2>Modificări în 10.0</h2>
+<ul>
+<li>S-a rezolvat o problemă în dialog care făcea să se afișeze textul de pe
+  planșetă când titlul său conținea caractere nelatine.</li>
+<li>S-a rezolvat o problemă întâmpinată la utilizarea copierii și a tăierii
+  simulate cu o tastatură arabă. A fost rezolvată de Abdel, care acum are
+  statutul de autor al suplimentului.</li>
+</ul>
+<h2>Modificări în 9.0</h2>
+<ul>
+<li>Acum, este posibilă afișarea textului aflat pe planșetă în modul de
+  navigare.</li>
+<li>S-a adăugat o opțiune care vă permite să alegeți dacă vor fi sau nu
+  necesare confirmările îb cazul în care planșeta nu este goală, un bun
+  exemplu fiind copierea fișierelor sau a folderelor.</li>
+<li>Necesită NVDA 2018.4 sau mai nou.</li>
+</ul>
+<h2>Modificări în 8.0</h2>
+<ul>
+<li>Setările suplimentului sunt afișate în categoria corespunzătoare a
+  dialogului setărilor NVDA..</li>
+<li>Necesită NVDA 2018.2 sau mai nou.</li>
+<li>Dacă e musai, puteți să descărcați <a href="https://addons.nvda-project.org/files/get.php?file=ccd-o">ultima versiune compatibilă cu NVDA
+  2017.3</a>.</li>
+</ul>
+<h2>Modificări în 7.0</h2>
+<ul>
+<li>În dialogul pentru configurarea copierii și tăierii simulate la instalare,
+  dacă alegeți nu, comenzile pentru aceste caracteristici vor fi șterse,
+  astfel încât să puteți restaura comportamentul normal pentru control+c și
+  control+x.</li>
+</ul>
+<h2>Modificări în 6.0</h2>
+<ul>
+<li>Au fost adăugate opțiuni pentru a alege dacă opțiunile disponibile ar trebui efectuate după confirmare.</li>
+<li>Au fost adăugate comenzile de simulare a copiei și a tăierii, care pot fi atribuite din dialogul gesturilor de intrare.</li>
+<li>A fost adăugat un dialog pentru configurarea funcționalităților de simulare a copiei și a tăierii la instalare. Aceasta permite adăugarea comenzii control+c și control+x pentru copiere și tăiere. Veți fi întrebat dacă vreți să înlocuiți conținuturile planșetei la apăsarea acestor combinații de taste.</li>
+<li>A fost reparată documentația pentru script_add (Windows+NVDA+c).</li>
+</ul>
+<h2>Modificări în 5.0</h2>
+<ul>
+<li>Prezentarea vizuală a dialogului a fost îmbunătățită, aderând la aspectul
+  dialogurilor afișate în NVDA.</li>
+<li>Necesită NVDA 2016.4 sau mai nou.</li>
+</ul>
+<h2>Modificări din 4.0</h2>
+<ul>
+<li>Setările suplimentului sunt gestionate din configurarea NVDA, deci
+  profilurile implicite pot fi folosite pentru a salva diferite separatoare,
+  și nu este nevoie să copiezi setările pentru a le importa la reinstalare.</li>
+<li>Acum este posibilă selectarea dacă textul adăugat va fi anexat sau
+  prefixat, utilizând căsuța Adăugare text din dialogul de setări al Clip
+  Contents Designer-ului.</li>
+</ul>
+<h2>Modificări din 3.0</h2>
+<ul>
+<li>Reprezentarea Braille din obiectele MathML poate fi adăugat pe planșetă
+  dacă MathPlayer este instalat.</li>
+<li>Dacă niciun separator nu este setat, o singură linie va fi adăugată între
+  segmentele textului adăugat.</li>
+<li>O scurtătură poate fi definită pentru a deschide setările Clip Contents
+  Designer-ului.</li>
+<li>A fost adăugată o căsuță în dialogul de setări, pentru a selecta dacă
+  separatorul trebuie să fie copiat pentru a fi immportat când reinstalezi
+  add-on-ul.</li>
+</ul>
+<h2>Modificări din 2.0</h2>
+<ul>
+<li>Caracterele indiene pot fi folosite ca separator între content-ul adăugat.</li>
+</ul>
+<h2>Modificări din 1.0</h2>
+<ul>
+<li>Versiunea inițială.</li>
+</ul>
+<p>[[!tag dev stable]]</p>
+</body>
+</html>

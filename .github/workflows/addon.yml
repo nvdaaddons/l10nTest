@@ -48,7 +48,7 @@ jobs:
       shell: cmd
       run: |
         ping 192.0.2.0 -n 1 -w 10000 > nul
-        move %TEMP%\nvda.log nvda.log
+        copy %TEMP%\nvda.log nvda.log
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:

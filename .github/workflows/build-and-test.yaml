@@ -46,11 +46,21 @@ jobs:
       run: start nvda -q
       shell: cmd
     - name: look in workspace directory to see what is there
-      run: dir /S /a
+      run: dir /S /a > whats_here
       shell: cmd
+    - name: Upload whats_here file
+      uses: actions/upload-artifact@v1
+      with:
+        name: whats_here
+        path: whats_here
     - name: look in nvda appdata directory to see what is there.
-      run: dir /s /a %APPDATA%\nvda
+      run: dir /s /a %APPDATA%\nvda > nvda_here
       shell: cmd
+    - name: Upload nvda_here file
+      uses: actions/upload-artifact@v1
+      with:
+        name: nvda_here
+        path: nvda_here
     #- name: look in nvda appdata addons directory
       #run: dir %APPDATA%\nvda\addons
       #shell: cmd

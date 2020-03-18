@@ -46,7 +46,7 @@ jobs:
       run: start nvda -q
       shell: cmd
     - name: look in workspace directory to see what is there
-      run: dir /s /a
+      run: dir /S /a
       shell: cmd
     - name: look in nvda appdata directory to see what is there.
       run: dir /s /a %APPDATA%\nvda

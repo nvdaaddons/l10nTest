@@ -33,13 +33,14 @@ jobs:
     - name: Copy addon
       run: |
         move *.nvda-addon addon.zip
-        expand-archive addon.zip '%APPDATA%\nvda\addons\addon'
+        expand-archive addon.zip $env:appdata\nvda\addons\addon
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
-      run: |
-        stable.exe --install -m -f nvda.log --debug-logging
-        dir %temp%
+      run: stable.exe --install-silent
+      shell: cmd
+    - name: start nvda
+      run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
@@ -48,9 +49,9 @@ jobs:
       shell: cmd
       run: |
         ping 192.0.2.0 -n 1 -w 10000 > nul
-        copy %TEMP%\nvda.log nvda.log
+        copy %TEMP%\nvda-with-addon.log nvda.log
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
-        name: NVDA-log
+        name: nvda.log
         path: nvda.log

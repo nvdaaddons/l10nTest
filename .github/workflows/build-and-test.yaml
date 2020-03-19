@@ -40,7 +40,7 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m -f nvda-with-addon.log --debug-logging
+      run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
@@ -61,6 +61,15 @@ jobs:
       with:
         name: nvda_here
         path: nvda_here
+###
+    - name: look in temp directory to see what is there.
+      run: dir /s /a %TEMP% > temp_here
+      shell: cmd
+    - name: Upload temp_here file
+      uses: actions/upload-artifact@v1
+      with:
+        name: temp_here
+        path: temp_here
     - name: get the log file from temp directory
       shell: cmd
       run: |

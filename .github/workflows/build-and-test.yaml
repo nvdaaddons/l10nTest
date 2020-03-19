@@ -45,31 +45,6 @@ jobs:
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
-    - name: look in workspace directory to see what is there
-      run: dir /S /a > whats_here
-      shell: cmd
-    - name: Upload whats_here file
-      uses: actions/upload-artifact@v1
-      with:
-        name: whats_here
-        path: whats_here
-    - name: look in nvda appdata directory to see what is there.
-      run: dir /s /a %APPDATA%\nvda > nvda_here
-      shell: cmd
-    - name: Upload nvda_here file
-      uses: actions/upload-artifact@v1
-      with:
-        name: nvda_here
-        path: nvda_here
-###
-    - name: look in temp directory to see what is there.
-      run: dir /s /a %TEMP% > temp_here
-      shell: cmd
-    - name: Upload temp_here file
-      uses: actions/upload-artifact@v1
-      with:
-        name: temp_here
-        path: temp_here
     - name: get the log file from temp directory
       shell: cmd
       run: |

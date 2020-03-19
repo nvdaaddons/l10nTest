@@ -33,7 +33,7 @@ jobs:
     - name: Copy addon
       run: |
         move *.nvda-addon addon.zip
-        expand-archive addon.zip $env:appdata\addons\addon
+        expand-archive addon.zip $env:appdata\nvda\addons\addon
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA

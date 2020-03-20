@@ -34,8 +34,10 @@ jobs:
         flake8 --config .github/extra_resources/setup.cfg --exit-zero addon
     - name: Lint pull request with flake8
       if: github.event_name == 'pull_request'
-      run:
+      run: |
+        mkdir -p artifactPath
         curl ${{ github.event.pull_request.diff_url }} | flake8 --diff --config .github/extra_resources/setup.cfg --exit-zero 
+        dir artifactPath
         # stop the build if there are Python syntax errors or undefined names
         # flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
@@ -44,7 +46,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Flake8-output
-        path: .github/extra_resources/flake8.txt
+        path: artifactPath
     - name: Build add-on
       run: scons
     - name: Copy addon

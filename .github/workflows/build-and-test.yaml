@@ -22,7 +22,7 @@ jobs:
         pip install flake8
         pip install flake8-tabs
     - name: Lint push with flake8
-      if: 'github.event_name == push'
+      if: github.event_name == 'push'
       run:
         flake8 --config .github/extra_resources/setup.cfg --exit-zero addon
     - name: Lint pull request with flake8

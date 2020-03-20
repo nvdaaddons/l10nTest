@@ -44,7 +44,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Flake8-output
-        path: flake8.txt
+        path: .github/extra_resources/flake8.txt
     - name: Build add-on
       run: scons
     - name: Copy addon

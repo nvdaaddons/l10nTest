@@ -33,7 +33,7 @@ jobs:
       run:
         flake8 --config .github/extra_resources/setup.cfg --exit-zero addon
     - name: Lint pull request with flake8
-      if: github.event_name == 'pull_request' && github.event_type == 'edited'
+      if: github.event_name == 'pull_request'
       run:
         curl ${{ github.event.pull_request.diff_url }} | flake8 --diff --config .github/extra_resources/setup.cfg --exit-zero 
         # stop the build if there are Python syntax errors or undefined names
@@ -45,7 +45,6 @@ jobs:
       with:
         name: Flake8-output
         path: flake8.txt
-
     - name: Build add-on
       run: scons
     - name: Copy addon

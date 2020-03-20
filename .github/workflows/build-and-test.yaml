@@ -1,6 +1,13 @@
 name: Build and test addon
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
 
 jobs:
   build:

@@ -10,7 +10,7 @@ on:
       - synchronize
 
 jobs:
-  build:
+  buildAndTest:
 
     runs-on: windows-latest
 

@@ -20,7 +20,7 @@ jobs:
       with:
         fetch-depth: 2
     - name: Checkout master branch
-      run: git checkout master
+      run: git checkout origin/master
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:

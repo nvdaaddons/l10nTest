@@ -1,6 +1,13 @@
 name: Build and test addon
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
 
 jobs:
   build:
@@ -21,9 +28,17 @@ jobs:
         pip install Markdown
         pip install flake8
         pip install flake8-tabs
-    - name: Lint with flake8
+    - name: Build artifact path
+      run: mkdir -p artifactPath
+    - name: Lint push with flake8
+      if: github.event_name == 'push'
       run:
-        flake8 --config .github/extra_resources/setup.cfg --exit-zero addon
+        flake8 --config .github/extra_resources/setup.cfg --output-file="artifactPath\flake8.txt" --tee --exit-zero addon
+    - name: Lint pull request with flake8
+      if: github.event_name == 'pull_request'
+      run: |
+        git fetch origin
+        git diff -u origin/${{ github.event.pull_request.base.ref }} | flake8 --diff --config .github/extra_resources/setup.cfg --output-file="artifactPath\flake8.txt" --tee --exit-zero 
         # stop the build if there are Python syntax errors or undefined names
         # flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
@@ -33,24 +48,24 @@ jobs:
     - name: Copy addon
       run: |
         move *.nvda-addon addon.zip
-        expand-archive addon.zip '%APPDATA%\nvda\addons\addon'
+        Expand-Archive addon.zip '%APPDATA%\nvda\addons\addon'
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
       run: |
-        stable.exe --install -m -f nvda.log --debug-logging
-        dir %temp%
+        stable.exe --install -m -f artifactPath\nvda.log --debug-logging
+        # dir %temp%
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
-    - name: get the log file from temp directory
-      shell: cmd
-      run: |
-        ping 192.0.2.0 -n 1 -w 10000 > nul
-        copy %TEMP%\nvda.log nvda.log
-    - name: Upload NVDA's log
+    # - name: get the log file from temp directory
+      # shell: cmd
+      # run: |
+        # ping 192.0.2.0 -n 1 -w 10000 > nul
+        # copy %TEMP%\nvda.log nvda.log
+    # - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
-        name: NVDA-log
-        path: nvda.log
+        name: NVDALog-and-Flake8
+        path: artifactPath

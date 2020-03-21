@@ -55,7 +55,7 @@ jobs:
       run: start stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
+      run: start %programfiles(x86)%\nvda.exe -m -f %TEMP%\nvda-with-addon.log --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q

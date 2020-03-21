@@ -52,7 +52,9 @@ jobs:
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
-      run: stable.exe --install-silent
+      run: start stable.exe --install-silent
+      
+      shell: cmd
     - name: Start NVDA
       run: start nvda -m -f artifactPath\nvda.log --debug-logging
       # dir %temp%

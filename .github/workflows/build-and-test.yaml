@@ -53,6 +53,7 @@ jobs:
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
       run: start stable.exe --install-silent
+      shell: cmd
     - name: start nvda
       run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
       shell: cmd

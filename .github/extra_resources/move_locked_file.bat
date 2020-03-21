@@ -10,3 +10,4 @@ GOTO LOOP
 :FINISHED
 move %1 %2
 echo "file moved"
+exit /b 0

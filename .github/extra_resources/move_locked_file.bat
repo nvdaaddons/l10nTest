@@ -1,6 +1,6 @@
 @ECHO OFF
 echo "arg1: %1"
-echo "arg2: %1"
+echo "arg2: %2"
 :LOOP
 move %1 %2
 IF ERRORLEVEL 0 (

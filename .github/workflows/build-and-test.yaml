@@ -67,6 +67,3 @@ jobs:
       with:
         name: nvda.log and flake8
         path: artifactPath
-
-        name: NVDALog-and-Flake8
-        path: artifactPath

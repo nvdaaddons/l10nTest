@@ -55,7 +55,9 @@ jobs:
       run: start stable.exe --install-silent
       shell: cmd
     - name: Start NVDA
-      run: start %programfiles(x86)%\nvda.exe -m -f artifactPath\nvda.log --debug-logging
+      run: |
+        start nvda -m -f nvda.log --debug-logging
+        dir artifactPath
       shell: cmd
       # dir %temp%
       # shell: cmd

@@ -76,10 +76,10 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m -f nvda-with-addon.log --debug-logging
+      run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
       shell: cmd
     - name: restart NVDA, so that the lock on the current logfile can be freed
-      run: start nvda -r -f nvda.log
+      run: start nvda -r -f %TEMP%\nvda.log
       shell: cmd
     - name: list whats in the appdata\nvda directory
       shell: cmd

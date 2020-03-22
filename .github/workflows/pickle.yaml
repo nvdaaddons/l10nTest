@@ -1,4 +1,4 @@
-name: Build and test addon
+name: Build and test addon with pickle
 
 on: [push, pull_request]
 
@@ -40,18 +40,15 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
+      run: start nvda -m
       shell: cmd
-    - name: Quit NVDA
-      run: start nvda -q
-      shell: cmd
-    - name: get the log file from temp directory
-      shell: cmd
+    - name: Test pickle
+      shell: python
       run: |
-        ping 192.0.2.0 -n 1 -w 10000 > nul
-        copy %TEMP%\nvda-with-addon.log nvda.log
-    - name: Upload NVDA's log
-      uses: actions/upload-artifact@v1
-      with:
-        name: nvda.log
-        path: nvda.log
+        import pickle
+        import os
+        statePath = os.path.join(os.environ["appdata"], "nvda", "addonsState.pickle")
+        with open(statePath, "rb") as f:
+            state = pickle.load(f)
+        print(state)
+        

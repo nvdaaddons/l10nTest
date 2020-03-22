@@ -65,8 +65,8 @@ jobs:
       #run: .github/extra_resources/move_locked_file.bat %temp%\nvda-with-addon.log artifactPath\nvda.log
       shell: python
       run: |
-        import os, tempdir
-        path = os.path.join(tempfile.gettempdir(), "nvda.log")
+        import os, tempfile
+        path = os.path.join(tempfile.gettempdir(), "nvda-old.log")
         os.rename(path, os.path.join("artifactPath", "nvda.log"))
     - name: Upload NVDA's log and flake8 results
       uses: actions/upload-artifact@v1

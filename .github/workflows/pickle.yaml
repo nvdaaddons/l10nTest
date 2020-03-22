@@ -30,14 +30,12 @@ jobs:
         # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Build add-on
       run: scons
-    - name: Create dir globalPlugins
-      run: makedir -p $env:appdata\nvda\globalPlugins
     - name: Copy NVDA resources
       run: |
         move *.nvda-addon addon.zip
         expand-archive addon.zip $env:appdata\nvda\addons\addon
-        move .github\extra_resources\nvda.ini $env:appdata\nvda\nvda.ini
-        move .github\extra_resources\printRunningAddons.py $env:appdata\nvda\globalPlugins\printRunningAddons.py
+        move .github\extra_resources\nvda.* nvda.zip
+        expand-archive nvda.zip $env:appdata\nvda
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA

@@ -47,7 +47,7 @@ jobs:
       run: |
         import pickle
         import os
-        statePath = os.path.join(os.environ["%appdata%"], "nvda", "addonsState.pickle")
+        statePath = os.path.join(os.environ["appdata"], "nvda", "addonsState.pickle")
         with open(statePath, "rb") as f:
             state = pickle.load(f)
         print(state)

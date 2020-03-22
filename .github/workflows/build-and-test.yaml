@@ -35,7 +35,7 @@ jobs:
         git diff -u origin/${{ github.event.pull_request.base.ref }} | flake8 --diff --config .github/extra_resources/setup.cfg 
 
   buildAndTestWithNVDA:
-    needs: syntaxAndCodeStyle:
+    needs: syntaxAndCodeStyle
     runs-on: windows-latest
     steps:
     - name: Checkout code

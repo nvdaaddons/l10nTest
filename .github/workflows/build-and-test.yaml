@@ -75,11 +75,14 @@ jobs:
       with:
         name: contents_of_temp_dir
         path: contents_of_temp_dir.txt
+    - name: get a copy of the nvda-old.log
+      shell: cmd
+      run: move %TEMP%\nvda-old.log .
     - name: Upload nvda-old.log
       uses: actions/upload-artifact@v1
       with:
         name: nvda-old.log
-        path: $env:temp\nvda-old.log
+        path: nvda-old.log
     #- name: Upload NVDA's log and flake8 results
       #uses: actions/upload-artifact@v1
       #with:

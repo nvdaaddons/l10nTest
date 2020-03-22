@@ -4,9 +4,9 @@ echo "arg2: %2"
 echo "sleeping for a bit"
 ping 192.0.2.0 -n 1 -w 1000 > nul
 findstr /i /c:"nvda exit" %1
-IF ERRORLEVEL 0 (goto :DONE)
-goto :LOOP
+IF ERRORLEVEL 0 GOTO :DONE
+GOTO :LOOP
 :DONE
-copy %1 %2
+move %1 %2
 echo "file moved"
 exit /b 0

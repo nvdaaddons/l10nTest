@@ -71,38 +71,20 @@ jobs:
     - name: Install NVDA
       run: stable.exe --install-silent
       shell: cmd
-    - name: start nvda without addon
-      run: start nvda -m
-      shell: cmd
     - name: Copy addon
       run: |
         move *.nvda-addon addon.zip
-        expand-archive addon.zip $env:appdata\nvda\addons\addon
+        expand-archive addon.zip $env:APPDATA\nvda\addons\addon
+      run: start nvda -m --debug-logging
+      shell: cmd
+    - name: Start NVDA
+      run: start nvda -m -r
+      shell: cmd
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
-    - name: start nvda with addon
-      run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
-      shell: cmd
-    - name: Quit NVDA
-      run: start nvda -q
-      shell: cmd
-    - name: start nvda once more
-      run: start nvda -m
-      shell: cmd
-    - name: list whats in the appdata\nvda directory
-      shell: cmd
-      run: dir /S %APPDATA%\nvda > nvda-dir.txt
-    - name: Upload nvda-dir.txt
-      uses: actions/upload-artifact@v1
-      with:
-        name: nvda-dir.txt
-        path: nvda-dir.txt
-    - name: get a copy of the nvda-with-addon.log
-      shell: cmd
-      run:  copy %TEMP%\nvda-with-addon.log nvda-old.log
-    - name: Upload nvda-old.log
+    - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
         name: nvda-old.log
-        path: nvda-old.log
+        path: $env:TEMP\nvda-old.log

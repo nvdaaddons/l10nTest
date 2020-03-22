@@ -84,6 +84,10 @@ jobs:
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
+    - name: kill any process that has the log file open
+      run: |
+        $lockedFile=$env:GITHUB_WORKSPACE\nvda.log 
+        Get-Process | foreach{$processVar = $_;$_.Modules | foreach{if($_.FileName -eq $lockedFile){$processVar.Name + " PID:" + $processVar.id}}}
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:

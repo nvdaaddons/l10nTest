@@ -60,7 +60,7 @@ jobs:
     - name: Quit NVDA
       run: start nvda -r
       shell: cmd
-    #- name: get the log file from temp directory
+    - name: get the log file from temp directory
       #shell: cmd
       #run: .github/extra_resources/move_locked_file.bat %temp%\nvda-with-addon.log artifactPath\nvda.log
       run: move %temp%\nvda-old.log artifactPath\nvda.log

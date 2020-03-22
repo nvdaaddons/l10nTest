@@ -41,11 +41,13 @@ jobs:
       shell: cmd
     - name: start nvda
       run: start nvda -m
+      shell: cmd
     - name: Test pickle
       shell: python
       run: |
         import pickle
-        statePath = os.join.path(os.environ["%appdata%"], "nvda", "addonsState.pickle")
+        import os
+        statePath = os.path.join(os.environ["%appdata%"], "nvda", "addonsState.pickle")
         with open(statePath, "rb") as f:
             state = pickle.load(f)
         print(state)

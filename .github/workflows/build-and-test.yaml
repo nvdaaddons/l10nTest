@@ -47,7 +47,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: check for files known to cause problems
-      run: ! find  . -type f | grep -vP "^./.git" | xargs file | grep -iP "bom|extended|iso"
+      run: '! find  . -type f | grep -vP "^./.git" | xargs file | grep -iP "bom|extended|iso"'
 
   buildAndTestWithNVDA:
     needs: [syntaxAndCodeStyle, extendedAsciiAndBom]

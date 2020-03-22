@@ -4,8 +4,9 @@ echo "arg2: %2"
 :LOOP
 sync
 echo "sleeping for a bit"
-ping 192.0.2.0 -n 1 -w 10000 > nul
-move %1 %2 > nul
+ping 192.0.2.0 -n 1 -w 1000 > nul
+findstr /i /c:"NVDA exit" %1
 IF %ERRORLEVEL% NEQ 0 GOTO :LOOP
-echo "With determination, mountains can be moved"
+copy %1 %2
+echo "file copied"
 exit /b 0

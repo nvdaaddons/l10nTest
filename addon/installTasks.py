@@ -54,4 +54,3 @@ def onInstall():
 		inputCore.manager.userGestureMap.add(copyGesture, module, className, copyScriptName)
 		inputCore.manager.userGestureMap.add(cutGesture, module, className, cutScriptName)
 	inputCore.manager.userGestureMap.save()
-a

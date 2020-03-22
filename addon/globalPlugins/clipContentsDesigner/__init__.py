@@ -3,7 +3,7 @@
 # Copyright (C) 2012-2019 Noelia Ruiz Martínez, other contributors
 # Released under GPL 2
 
-#import addonHandler
+# import addonHandler
 import globalPluginHandler
 import api
 import textInfos

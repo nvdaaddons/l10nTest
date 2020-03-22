@@ -89,15 +89,3 @@ jobs:
       with:
         name: nvda.log
         path: nvda.log
-    - name: Upload NVDA's old log
-      if: failure()
-      uses: actions/upload-artifact@v1
-      with:
-        name: nvda-old.log
-        path: nvda-old.log
-    - name: Upload NVDA's old log
-      uses: actions/upload-artifact@v1
-      with:
-        name: nvda-old.log
-        path: nvda-old.log
-

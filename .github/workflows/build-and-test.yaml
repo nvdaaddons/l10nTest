@@ -75,11 +75,11 @@ jobs:
       run: |
         move *.nvda-addon addon.zip
         expand-archive addon.zip $env:APPDATA\nvda\addons\addon
-    - name: Start NVDA
+    - name: Start NVDA with addon
       run: start nvda -m -f %GITHUB_WORKSPACE%\nvda.log --debug-logging
       shell: cmd
     - name: Restart NVDA
-      run: start nvda -m -r -f %GITHUB_WORKSPACE%\nvda.log
+      run: start nvda -m -r
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
@@ -90,7 +90,14 @@ jobs:
         name: nvda.log
         path: nvda.log
     - name: Upload NVDA's old log
+      if: failure()
       uses: actions/upload-artifact@v1
       with:
         name: nvda-old.log
         path: nvda-old.log
+    - name: Upload NVDA's old log
+      uses: actions/upload-artifact@v1
+      with:
+        name: nvda-old.log
+        path: nvda-old.log
+

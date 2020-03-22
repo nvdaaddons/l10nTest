@@ -76,18 +76,21 @@ jobs:
         move *.nvda-addon addon.zip
         expand-archive addon.zip $env:APPDATA\nvda\addons\addon
     - name: Start NVDA
-      run: start nvda -m --debug-logging
+      run: start nvda -m -f %GITHUB_WORKSPACE%\nvda.log --debug-logging
       shell: cmd
     - name: Restart NVDA
-      run: start nvda -m -r
+      run: start nvda -m -r -f %GITHUB_WORKSPACE%\nvda.log
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
-    - name: Move nvda.log to workspace
-      run: move $env:TEMP\nvda.log $env:GITHUB_WORKSPACE\nvda.log
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
         name: nvda.log
         path: nvda.log
+    - name: Upload NVDA's old log
+      uses: actions/upload-artifact@v1
+      with:
+        name: nvda-old.log
+        path: nvda-old.log

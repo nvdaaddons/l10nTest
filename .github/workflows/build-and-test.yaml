@@ -84,8 +84,10 @@ jobs:
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
+    - name: Move nvda-old.log to workspace
+      run: move $env:TEMP\nvda-old.log $env:GITHUB_WORKSPACE\nvda.log
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
-        name: nvda-old.log
-        path: $env:TEMP\nvda-old.log
+        name: nvda.log
+        path: nvda.log

@@ -30,10 +30,12 @@ jobs:
         # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Build add-on
       run: scons
-    - name: Copy addon
+    - name: Copy NVDA resources
       run: |
         move *.nvda-addon addon.zip
         expand-archive addon.zip $env:appdata\nvda\addons\addon
+        move .github\extra_resources\nvda.ini $env:appdata\nvda\nvda.ini
+        move .github\extra_resources\printRunningAddons.py $env:appdata\nvda\globalPlugins\printRunningAddons.py
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
@@ -42,13 +44,3 @@ jobs:
     - name: start nvda
       run: start nvda -m
       shell: cmd
-    - name: Test pickle
-      shell: python
-      run: |
-        import pickle
-        import os
-        statePath = os.path.join(os.environ["%appdata%"], "nvda", "addonsState.pickle")
-        with open(statePath, "rb") as f:
-            state = pickle.load(f)
-        print(state)
-        

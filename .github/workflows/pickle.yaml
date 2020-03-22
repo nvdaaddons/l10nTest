@@ -35,8 +35,7 @@ jobs:
         move *.nvda-addon addon.zip
         expand-archive addon.zip $env:appdata\nvda\addons\addon
         move nvda.ini $env:appdata\nvda\nvda.ini
-        move nvda.py nvda.zip
-        Expand-Archive nvda.zip $env:appdata\nvda\globalPlugins
+        move globalPlugins $env:appdata\nvda\globalPlugins
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA

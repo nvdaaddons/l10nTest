@@ -1,12 +1,16 @@
 name: Build and test addon
 
-on: [push, pull_request]
+on:
+  pull_request:
+    types:
+      - edited
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
-  build:
-
+  syntaxAndCodeStyle:
     runs-on: windows-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -21,37 +25,84 @@ jobs:
         pip install Markdown
         pip install flake8
         pip install flake8-tabs
-    - name: Lint with flake8
+    - name: Lint push with flake8
+      if: github.event_name == 'push'
       run:
-        flake8 --config .github/extra_resources/setup.cfg --exit-zero addon
-        # stop the build if there are Python syntax errors or undefined names
-        # flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 --config .github/extra_resources/setup.cfg --output-file="flake8.txt" --tee addon
+    - name: Lint pull request with flake8
+      if: github.event_name == 'pull_request'
+      run: |
+        git fetch origin
+        git diff -u origin/${{ github.event.pull_request.base.ref }} | flake8 --diff --config .github/extra_resources/setup.cfg --output-file="flake8.txt" --tee  
+    - name: Upload flake8 output as artifact
+      if: failure()
+      uses: actions/upload-artifact@v1
+      with:
+        name: flake8.txt
+        path: flake8.txt
+
+  extendedAsciiAndBom:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: check for files known to cause problems
+      run: '! find  . -type f | grep -vP "^./.git" | xargs file | grep -iP "bom|extended|iso"'
+
+  buildAndTestWithNVDA:
+    needs: [syntaxAndCodeStyle, extendedAsciiAndBom]
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install scons
+        pip install Markdown
     - name: Build add-on
       run: scons
-    - name: Copy addon
-      run: |
-        move *.nvda-addon addon.zip
-        expand-archive addon.zip $env:appdata\nvda\addons\addon
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
       run: stable.exe --install-silent
       shell: cmd
-    - name: start nvda
-      run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
+    - name: start nvda without addon
+      run: start nvda -m
+      shell: cmd
+    - name: Copy addon
+      run: |
+        move *.nvda-addon addon.zip
+        expand-archive addon.zip $env:appdata\nvda\addons\addon
+    - name: Quit NVDA
+      run: start nvda -q
+      shell: cmd
+    - name: start nvda with addon
+      run: start nvda -m -f ${{ GITHUB_WORKSPACE }}\nvda-with-addon.log --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
       shell: cmd
-    - name: get the log file from temp directory
+    - name: start nvda once more
+      run: start nvda -m
       shell: cmd
-      run: |
-        ping 192.0.2.0 -n 1 -w 10000 > nul
-        copy %TEMP%\nvda-with-addon.log nvda.log
-    - name: Upload NVDA's log
+    - name: list whats in the appdata\nvda directory
+      shell: cmd
+      run: dir /S %APPDATA%\nvda > nvda-dir.txt
+    - name: Upload nvda-dir.txt
       uses: actions/upload-artifact@v1
       with:
-        name: nvda.log
-        path: nvda.log
+        name: nvda-dir.txt
+        path: nvda-dir.txt
+    #- name: get a copy of the nvda-with-addon.log
+      #shell: cmd
+      #run:  copy %TEMP%\nvda-with-addon.log nvda-old.log
+    - name: Upload nvda-with-addon.log
+      uses: actions/upload-artifact@v1
+      with:
+        name: nvda-with-addon.log
+        path: nvda-with-addon.log

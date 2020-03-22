@@ -35,13 +35,22 @@ jobs:
         git fetch origin
         git diff -u origin/${{ github.event.pull_request.base.ref }} | flake8 --diff --config .github/extra_resources/setup.cfg --output-file="flake8.txt" --tee  
     - name: Upload flake8 output as artifact
+      if: failure()
       uses: actions/upload-artifact@v1
       with:
         name: flake8.txt
         path: flake8.txt
 
+  extendedAsciiAndBom:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: check for files known to cause problems
+      run: ! find  . -type f | grep -vP "^./.git" | xargs file | grep -iP "bom|extended|iso"
+
   buildAndTestWithNVDA:
-    needs: syntaxAndCodeStyle
+    needs: [syntaxAndCodeStyle, extendedAsciiAndBom]
     runs-on: windows-latest
     steps:
     - name: Checkout code

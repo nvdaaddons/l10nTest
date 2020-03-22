@@ -75,9 +75,10 @@ jobs:
       run: |
         move *.nvda-addon addon.zip
         expand-archive addon.zip $env:APPDATA\nvda\addons\addon
+    - name: Start NVDA
       run: start nvda -m --debug-logging
       shell: cmd
-    - name: Start NVDA
+    - name: Restart NVDA
       run: start nvda -m -r
       shell: cmd
     - name: Quit NVDA

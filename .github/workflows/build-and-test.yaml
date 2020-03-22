@@ -28,12 +28,17 @@ jobs:
     - name: Lint push with flake8
       if: github.event_name == 'push'
       run:
-        flake8 --config .github/extra_resources/setup.cfg addon
+        flake8 --config .github/extra_resources/setup.cfg --output-file="flake8.txt" --tee addon
     - name: Lint pull request with flake8
       if: github.event_name == 'pull_request'
       run: |
         git fetch origin
-        git diff -u origin/${{ github.event.pull_request.base.ref }} | flake8 --diff --config .github/extra_resources/setup.cfg 
+        git diff -u origin/${{ github.event.pull_request.base.ref }} | flake8 --diff --config .github/extra_resources/setup.cfg --output-file="flake8.txt" --tee  
+    - name: Upload flake8 output as artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: flake8.txt
+        path: flake8.txt
 
   buildAndTestWithNVDA:
     needs: syntaxAndCodeStyle

@@ -30,6 +30,8 @@ jobs:
         # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Build add-on
       run: scons
+    - name: Create dir globalPlugins
+      run: makedir -p $env:appdata\nvda\globalPlugins
     - name: Copy NVDA resources
       run: |
         move *.nvda-addon addon.zip

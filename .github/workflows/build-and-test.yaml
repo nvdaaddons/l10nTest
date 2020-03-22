@@ -60,7 +60,7 @@ jobs:
     - name: Quit NVDA
       run: start nvda -r
       shell: cmd
-    - name: get the log file from temp directory
+    - name: List the content of the temp directory
       shell: cmd
       run:
         dir /S %TEMP% > contents_of_temp_dir.txt
@@ -75,6 +75,10 @@ jobs:
       with:
         name: contents_of_temp_dir
         path: contents_of_temp_dir.txt
+    - name: get the log file from temp directory
+      shell: cmd
+      run:
+        move %TEMP%\nvda-old.txt artifactPath\nvda.log
     - name: Upload NVDA's log and flake8 results
       uses: actions/upload-artifact@v1
       with:

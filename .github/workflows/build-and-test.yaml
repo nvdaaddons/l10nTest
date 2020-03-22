@@ -1,7 +1,6 @@
 name: Build and test addon
 
 on:
-  push:
   pull_request:
     types:
       - opened
@@ -9,10 +8,8 @@ on:
       - synchronize
 
 jobs:
-  buildAndTest:
-
+  syntaxAndCodeStyle:
     runs-on: windows-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -27,21 +24,31 @@ jobs:
         pip install Markdown
         pip install flake8
         pip install flake8-tabs
-    - name: Build artifact path
-      run: mkdir -p artifactPath
     - name: Lint push with flake8
       if: github.event_name == 'push'
       run:
-        flake8 --config .github/extra_resources/setup.cfg --output-file="artifactPath\flake8.txt" --tee --exit-zero addon
+        flake8 --config .github/extra_resources/setup.cfg addon
     - name: Lint pull request with flake8
       if: github.event_name == 'pull_request'
       run: |
         git fetch origin
-        git diff -u origin/${{ github.event.pull_request.base.ref }} | flake8 --diff --config .github/extra_resources/setup.cfg --output-file="artifactPath\flake8.txt" --tee --exit-zero 
-        # stop the build if there are Python syntax errors or undefined names
-        # flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        git diff -u origin/${{ github.event.pull_request.base.ref }} | flake8 --diff --config .github/extra_resources/setup.cfg 
+
+  buildAndTestWithNVDA:
+    needs: syntaxAndCodeStyle:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install scons
+        pip install Markdown
     - name: Build add-on
       run: scons
     - name: Copy addon
@@ -54,27 +61,11 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      #run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
       run: start nvda -m --debug-logging
       shell: cmd
-    - name: Quit NVDA
+    - name: restart NVDA, so that the lock on the current logfile can be freed
       run: start nvda -r
       shell: cmd
-    - name: List the content of the temp directory
-      shell: cmd
-      run:
-        dir /S %TEMP% > contents_of_temp_dir.txt
-      #run: .github/extra_resources/move_locked_file.bat %temp%\nvda-with-addon.log artifactPath\nvda.log
-      #shell: python
-      #run: |
-        #import os, tempfile
-        #path = os.path.join(tempfile.gettempdir(), "nvda-old.log")
-        #os.rename(path, os.path.join(os.path.dirname(os.environ['GITHUB_WORKSPACE']), "artifactPath", "nvda.log"))
-    - name: Upload dir listing of temp directory
-      uses: actions/upload-artifact@v1
-      with:
-        name: contents_of_temp_dir
-        path: contents_of_temp_dir.txt
     - name: get a copy of the nvda-old.log
       shell: cmd
       run: move %TEMP%\nvda-old.log .
@@ -83,8 +74,3 @@ jobs:
       with:
         name: nvda-old.log
         path: nvda-old.log
-    #- name: Upload NVDA's log and flake8 results
-      #uses: actions/upload-artifact@v1
-      #with:
-        #name: nvda.log and flake8
-        #path: artifactPath

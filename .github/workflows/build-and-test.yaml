@@ -66,20 +66,29 @@ jobs:
         pip install Markdown
     - name: Build add-on
       run: scons
-    - name: Copy addon
-      run: |
-        move *.nvda-addon addon.zip
-        expand-archive addon.zip $env:appdata\nvda\addons\addon
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
       run: stable.exe --install-silent
       shell: cmd
-    - name: start nvda
+    - name: start nvda without addon
+      run: start nvda -m
+      shell: cmd
+    - name: Copy addon
+      run: |
+        move *.nvda-addon addon.zip
+        expand-archive addon.zip $env:appdata\nvda\addons\addon
+    - name: Quit NVDA
+      run: start nvda -q
+      shell: cmd
+    - name: start nvda with addon
       run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
       shell: cmd
-    - name: restart NVDA, so that the lock on the current logfile can be freed
-      run: start nvda -r -f %TEMP%\nvda.log
+    - name: Quit NVDA
+      run: start nvda -q
+      shell: cmd
+    - name: start nvda once more
+      run: start nvda -m
       shell: cmd
     - name: list whats in the appdata\nvda directory
       shell: cmd
@@ -91,7 +100,7 @@ jobs:
         path: nvda-dir.txt
     - name: get a copy of the nvda-with-addon.log
       shell: cmd
-      run: move %TEMP%\nvda-with-addon.log nvda-old.log
+      run:  copy %TEMP%\nvda-with-addon.log nvda-old.log
     - name: Upload nvda-old.log
       uses: actions/upload-artifact@v1
       with:

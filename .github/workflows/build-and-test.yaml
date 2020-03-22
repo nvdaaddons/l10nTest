@@ -61,7 +61,10 @@ jobs:
       run: start nvda -q
       shell: cmd
     - name: get the log file from temp directory
-      run: while((move $env:temp\nvda-with-addon.log artifactPath\nvda.log) -ne 0) {Start-Sleep -s 5 }; exit 0
+      shell: cmd
+      run: |
+        sync
+        move %temp%\nvda-with-addon.log artifactPath\nvda.log
     - name: Upload NVDA's log and flake8 results
       uses: actions/upload-artifact@v1
       with:

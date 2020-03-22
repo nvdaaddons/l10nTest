@@ -76,10 +76,10 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m --debug-logging
+      run: start nvda -m -f nvda-with-addon.log --debug-logging
       shell: cmd
     - name: restart NVDA, so that the lock on the current logfile can be freed
-      run: start nvda -r
+      run: start nvda -r -f nvda.log
       shell: cmd
     - name: list whats in the appdata\nvda directory
       shell: cmd
@@ -89,10 +89,9 @@ jobs:
       with:
         name: nvda-dir.txt
         path: nvda-dir.txt
-
-    - name: get a copy of the nvda-old.log
+    - name: get a copy of the nvda-with-addon.log
       shell: cmd
-      run: move %TEMP%\nvda-old.log .
+      run: move %TEMP%\nvda-with-addon.log nvda-old.log
     - name: Upload nvda-old.log
       uses: actions/upload-artifact@v1
       with:

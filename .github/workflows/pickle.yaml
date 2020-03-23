@@ -51,4 +51,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: nvda.log
-        path: nvda.log
+        path: $env:appdata\nvda\scratchpad\globalPlugins\nvda.log

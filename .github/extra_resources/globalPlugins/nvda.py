@@ -9,5 +9,6 @@ import globalVars
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
-	def terminate(self):
+	def __init__(self):
+		super(globalPluginHandler.GlobalPlugin, self).__init__()
 		newPath = shutil.copy(globalVars.appArgs.logFileName, os.environ['workspace'])

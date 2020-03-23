@@ -3,6 +3,7 @@
 # Copyright (C) 2012-2019 Noelia Ruiz Martínez, mesar Hameed
 # Released under GPL 2
 
+import shutil
 import globalPluginHandler
 import globalVars
 

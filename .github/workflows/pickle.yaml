@@ -34,8 +34,8 @@ jobs:
       run: |
         move *.nvda-addon addon.zip
         expand-archive addon.zip $env:appdata\nvda\addons\addon
-        move nvda.ini $env:appdata\nvda\nvda.ini
-        move globalPlugins $env:appdata\nvda\globalPlugins
+        move .github\extra_resources\nvda.ini $env:appdata\nvda\nvda.ini
+        move .github.extra_resources\globalPlugins $env:appdata\nvda\globalPlugins
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
@@ -44,3 +44,11 @@ jobs:
     - name: start nvda
       run: start nvda -m
       shell: cmd
+    - name: Quit NVDA
+      run: nvda -q
+      shell: cmd
+    - name: Upload NVDA's log
+      uses: actions/upload-artifact@v1
+      with:
+        name: nvda.log
+        path: nvda.log

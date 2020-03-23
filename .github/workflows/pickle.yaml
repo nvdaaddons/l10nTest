@@ -45,7 +45,7 @@ jobs:
       run: start nvda -m
       shell: cmd
     - name: Quit NVDA
-      run: nvda -q
+      run: start nvda -q
       shell: cmd
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1

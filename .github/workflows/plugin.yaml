@@ -42,10 +42,10 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m
+      run: start nvda -m debug-logging
       shell: cmd
-    - name: Quit NVDA
-      run: start nvda -q
+    - name: Restart NVDA
+      run: start nvda -r
       shell: cmd
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1

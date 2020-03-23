@@ -48,7 +48,7 @@ jobs:
       run: start nvda -q
       shell: cmd
     - name: Upload NVDA's log
-      uses: actions/upload-artifact@v1
+      uses: uses: actions/upload-artifact@v2-preview
       with:
-        name: nvda.log
-        path: nvda.log
+        name: 'nvda.log'
+        path: $env:appdata\nvda\scratchpad\globalPlugins\nvda.log

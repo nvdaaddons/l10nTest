@@ -5,6 +5,7 @@
 
 import globalPluginHandler
 import globalVars
+import os
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
@@ -12,5 +13,5 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		f = open(globalVars.appArgs.logFileName, "r", encoding="UTF-8")
 		logText = f.read()
 		f.close()
-		with open(os.path.join(os.path.dirname(__file__), "nvda.log"), "w", encoding="UTF-8") as f:
+		with open(os.path.join(os.environ['workspace'], "nvda.log"), "w", encoding="UTF-8") as f:
 			f.write(logText)

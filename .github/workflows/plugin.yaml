@@ -42,13 +42,13 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m debug-logging
+      run: start nvda -m --debug-logging
       shell: cmd
-    - name: Restart NVDA
-      run: start nvda -r
+    - name: Quit NVDA
+      run: start nvda -q
       shell: cmd
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v1
       with:
         name: nvda.log
-        path: $env:appdata\nvda\scratchpad\globalPlugins\nvda.log
+        path: nvda.log

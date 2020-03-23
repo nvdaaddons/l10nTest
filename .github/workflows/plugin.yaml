@@ -1,4 +1,4 @@
-name: Build and test addon with pickle
+name: Build and test addon with NVDA's plugin
 
 on: [push, pull_request]
 

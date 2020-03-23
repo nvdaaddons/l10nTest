@@ -3,13 +3,14 @@
 # Copyright (C) 2012-2019 Noelia Ruiz Martínez, mesar Hameed
 # Released under GPL 2
 
-import os
-import shutil
 import globalPluginHandler
 import globalVars
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
-	def __init__(self):
-	super(self, GlobalPlugin).__init__()
-		newPath = shutil.copy(globalVars.appArgs.logFileName, os.path.dirname(__file__)
+	def terminate(self):
+		f = open(globalVars.appArgs.logFileName, "r", encoding="UTF-8")
+		logText = f.read()
+		f.close()
+		with open(os.path.join(os.path.dirname(__file__), "nvda.log"), "w", encoding="UTF-8") as f:
+			f.write(logText)

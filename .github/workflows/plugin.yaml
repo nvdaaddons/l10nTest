@@ -42,7 +42,7 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: Create artifact path
-      mkdir: artifactPath
+      run: mkdir -p ${GITHUB_WORKSPACE}/artifactPath
     - name: start nvda
       run: start nvda -m --debug-logging
       shell: cmd

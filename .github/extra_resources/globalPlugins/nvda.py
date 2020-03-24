@@ -13,5 +13,5 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		f = open(globalVars.appArgs.logFileName, "r", encoding="UTF-8")
 		logText = f.read()
 		f.close()
-		with open(os.path.join(os.environ['GITHUB_WORKSPACE'], "nvda.log"), "w", encoding="UTF-8") as f:
+		with open(os.path.join(os.environ['GITHUB_WORKSPACE'], "artifactPath", "nvda.log"), "w", encoding="UTF-8") as f:
 			f.write(logText)

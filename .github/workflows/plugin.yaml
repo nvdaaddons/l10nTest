@@ -42,7 +42,8 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      path: ${GITHUB_WORKSPACE}/nvda.log
+      env:
+        path: ${GITHUB_WORKSPACE}/nvda.log
       run: start nvda -m --debug-logging -f $path
       shell: cmd
     - name: Quit NVDA

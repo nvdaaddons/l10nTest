@@ -42,9 +42,7 @@ jobs:
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      env:
-        path: ${GITHUB_WORKSPACE}/nvda.log
-      run: start nvda -m --debug-logging -f $path
+      run: start nvda -m --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
@@ -53,4 +51,4 @@ jobs:
       uses: actions/upload-artifact@v2-preview
       with:
         name: 'nvda.log'
-        path: $path
+        path: ${GITHUB_WORKSPACE}/nvda.log

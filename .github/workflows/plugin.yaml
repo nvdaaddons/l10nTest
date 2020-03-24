@@ -41,10 +41,8 @@ jobs:
     - name: Install NVDA
       run: stable.exe --install-silent
       shell: cmd
-    - name: Create artifact path
-      run: mkdir -p ${GITHUB_WORKSPACE}/artifactPath
     - name: start nvda
-      run: start nvda -m --debug-logging
+      run: start nvda -m --debug-logging -f %GITHUB_WORKSPACE%\nvda.log
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
@@ -53,4 +51,4 @@ jobs:
       uses: actions/upload-artifact@v2-preview
       with:
         name: 'nvda.log'
-        path: ${GITHUB_WORKSPACE}/artifactPath
+        path: nvda.log

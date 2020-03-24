@@ -41,10 +41,8 @@ jobs:
     - name: Install NVDA
       run: stable.exe --install-silent
       shell: cmd
-    - name: Create log path
-      run: mkdir -p artifactPath
     - name: start nvda
-      run: start nvda -m --debug-logging -f artifactPath\nvda.log
+      run: start nvda -m --debug-logging
       shell: cmd
     - name: Quit NVDA
       run: start nvda -q
@@ -53,4 +51,4 @@ jobs:
       uses: actions/upload-artifact@v2-preview
       with:
         name: 'nvda.log'
-        path: artifactPath
+        path: ${ temp }/nvda.log

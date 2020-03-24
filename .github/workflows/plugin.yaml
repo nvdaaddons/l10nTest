@@ -1,4 +1,4 @@
-name: Build and test addon
+name: Build and test addon with NVDA's plugin
 
 on: [push, pull_request]
 
@@ -30,28 +30,25 @@ jobs:
         # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Build add-on
       run: scons
-    - name: Copy addon
+    - name: Copy NVDA resources
       run: |
         move *.nvda-addon addon.zip
         expand-archive addon.zip $env:appdata\nvda\addons\addon
+        #move .github\extra_resources\nvda.ini $env:appdata\nvda\nvda.ini
+        #move .github\extra_resources\globalPlugins $env:appdata\nvda\scratchpad\globalPlugins
     - name: Download NVDA
       run: curl --location --output stable.exe https://addons.nvda-project.org/files/get.php?file=nvda
     - name: Install NVDA
       run: stable.exe --install-silent
       shell: cmd
     - name: start nvda
-      run: start nvda -m -f %TEMP%\nvda-with-addon.log --debug-logging
+      run: start nvda -m --debug-logging -f %GITHUB_WORKSPACE%\nvda.log
       shell: cmd
     - name: Quit NVDA
-      run: start nvda -q
+      run: start nvda -r
       shell: cmd
-    - name: get the log file from temp directory
-      shell: cmd
-      run: |
-        ping 192.0.2.0 -n 1 -w 10000 > nul
-        copy %TEMP%\nvda-with-addon.log nvda.log
     - name: Upload NVDA's log
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2-preview
       with:
-        name: nvda.log
+        name: 'nvda.log'
         path: nvda.log

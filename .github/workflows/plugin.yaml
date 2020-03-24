@@ -45,7 +45,7 @@ jobs:
       run: start nvda -m --debug-logging -f %GITHUB_WORKSPACE%\nvda.log
       shell: cmd
     - name: Quit NVDA
-      run: start nvda -q
+      run: start nvda -r
       shell: cmd
     - name: Upload NVDA's log
       uses: actions/upload-artifact@v2-preview
